@@ -24,7 +24,6 @@ const login = async ({ email, password }) => {
     process.env.JWT_SECRET,
     { expiresIn: "2h" }
   );
-  console.log("user.id", user.id);
   await User.findByIdAndUpdate({ _id: user.id }, { token });
   return {
     user: { subscription: user.subscription, email: user.email },
