@@ -23,10 +23,18 @@ const user = new Schema({
     default: null,
   },
   avatarURL: { type: String, default: this.email },
+  verify: {
+    type: Boolean,
+    default: false,
+  },
+  verificationToken: {
+    type: String,
+    required: [true, "Verify token is required"],
+  },
 });
 user.pre("save", async function () {
   if (this.isNew) {
-    this.password = bcrypt.hash(this.password, 10);
+    this.password = await bcrypt.hash(this.password, 10);
     this.avatarURL = gravatar.url(`${this.email}`, { s: "250" });
   }
 });

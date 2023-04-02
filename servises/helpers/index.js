@@ -1,3 +1,4 @@
 const checkContact = require("./checkContact");
+const sendVerifyEmail = require("./sendVerifyEmail");
 
-module.exports = { checkContact };
+module.exports = { checkContact, sendVerifyEmail };
