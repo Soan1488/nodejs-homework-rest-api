@@ -5,7 +5,6 @@ const checkContact = async ({ phone, email, name }, owner) => {
   const isPhone = await Contacts.findOne({ phone, owner });
   const isEmail = await Contacts.findOne({ email, owner });
   const isName = await Contacts.findOne({ name, owner });
-  console.log("isPhone", Boolean(isPhone));
   if (isPhone) {
     return phone;
   } else if (isName) {
